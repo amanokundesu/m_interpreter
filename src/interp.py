@@ -22,4 +22,4 @@ The M specification says that the WRITE command has this syntax: W[RITE][:tvexpr
 
 """
 def write_command(args: str):
-    
+    pass
