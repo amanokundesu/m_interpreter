@@ -1,4 +1,5 @@
-# setup_paths.py
+# Python script to import neighboring directories.
+
 from pathlib import Path
 import sys
 
