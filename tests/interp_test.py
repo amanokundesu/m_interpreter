@@ -7,3 +7,8 @@ from pathlib import Path
 # Custom
 import setup_files
 from src import interp
+
+if interp.run("test") != "test":
+    print('FAIL')
+
+print('ALL PASS')
