@@ -25,4 +25,4 @@ def write_command(args: str, output):
     output.write(evaluate(args))
 
 def evaluate(args:str) -> str:
-    return "Placeholder"
+    return "Placeholder"pass
