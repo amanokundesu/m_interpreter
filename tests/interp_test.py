@@ -8,7 +8,8 @@ from pathlib import Path
 import setup_files
 from src import interp
 
-if interp.run("test") != "test":
-    print('FAIL')
-
-print('ALL PASS')
+# Check that interp.run()
+## Check objectype
+assert isinstance(interp.run("test"), str), "interp.run() NOT returning STR OBJECT"
+## Check string contents
+assert interp.run("test") == "test", "interp.run() did NOT PRINT CORRECT STRING"
