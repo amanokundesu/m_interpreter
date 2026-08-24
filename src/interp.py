@@ -12,7 +12,7 @@ def exec_line(line:str, output):
     line = line.upper()
     if not line:
         return
-    command, _, args = line.split(' ')
+    command, _, args = line.split(' ') # <- TODO: error here in interp_test.py (2026-08-23)
     match command[0]:
         case W:
             write_command(args, output)
