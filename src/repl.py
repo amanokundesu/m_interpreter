@@ -2,9 +2,6 @@
 File: repl.py
 """
 # Import packages
-
-## Built-in
-
 ## Custom
 import interp
 
@@ -12,7 +9,7 @@ def prompt() -> str:
     '''
     Prompt to collect input
     '''
-    print("MINTERP REPL> ", end="")
+    print("M_INTERP REPL> ", end="")
     try:
         return input()
     except EOFError as eoferror:
