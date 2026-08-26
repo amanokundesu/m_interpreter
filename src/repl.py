@@ -1,3 +1,12 @@
 """
-This file holds the loop, prompt, history, and error display aspects, basically functioning as a UI. 
+File: repl.py
 """
+
+def prompt():
+    pass
+
+# Start main loop
+loop_run:bool = True
+while loop_run:
+    break
+    pass

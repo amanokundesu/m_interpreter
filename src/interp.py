@@ -9,7 +9,11 @@ import expr
 """
 # TODO: Possibly add an exceptions class
 # Later add multiline support 
-def run(source: str) -> str:
+def run(source:str) -> str:
+    '''
+    Run the commands written in `source` parameter,
+    and returns the command run.
+    '''
     output = io.StringIO()
     for line in source.splitlines():
         exec_line(line, output)
@@ -19,6 +23,9 @@ def run(source: str) -> str:
 
 """
 def exec_line(line:str, output):
+    '''
+    Executes the actual line into the output stream.
+    '''
     line = line.strip()
     line = line.upper()
     if not line:
@@ -35,6 +42,5 @@ def exec_line(line:str, output):
 The M specification says that the WRITE command has this syntax: W[RITE][:tvexpr] expr|*intexpr|fcc[,...]
 
 """
-def write_command(args: str, output):
-    output.write(expr.evaluate(args))
-
+def write_command(args:str, output):
+    output.write(evaluate(args))
