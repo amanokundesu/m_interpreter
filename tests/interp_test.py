@@ -12,7 +12,7 @@ from src import interp
 ## Check objectype
 assert isinstance(interp.run("test"), str), "interp.run() NOT returning STR OBJECT"
 ## Check string contents
-assert interp.run("test") == "test", "interp.run() did NOT PRINT CORRECT STRING"
+assert interp.run("W 1+2") == "3", "interp.run() did NOT PRINT CORRECT STRING"
 
 
 
