@@ -1,5 +1,13 @@
+"""
+This file will contain the code to execute the provided commands. 
+"""
 import io
+import expr
 
+"""
+
+"""
+# TODO: Possibly add an exceptions class
 # Later add multiline support 
 def run(source: str) -> str:
     output = io.StringIO()
@@ -7,12 +15,18 @@ def run(source: str) -> str:
         exec_line(line, output)
     return output.getvalue()
 
+"""
+
+"""
 def exec_line(line:str, output):
     line = line.strip()
     line = line.upper()
     if not line:
         return
-    command, _, args = line.split(' ') # <- TODO: error here in interp_test.py (2026-08-23)
+    statement = line.split(' ') # <- TODO: error here in interp_test.py (2026-08-23)
+    # TODO: Work around, better solution will come in the future. 
+    command = statement[0]
+    args = statement[1]
     match command[0]:
         case W:
             write_command(args, output)
@@ -22,7 +36,5 @@ The M specification says that the WRITE command has this syntax: W[RITE][:tvexpr
 
 """
 def write_command(args: str, output):
-    output.write(evaluate(args))
+    output.write(expr.evaluate(args))
 
-def evaluate(args:str) -> str:
-    return "Placeholder"
