@@ -1,47 +1,70 @@
 """
 This file will contain the code to execute the provided commands. 
 """
-import io
+import sys
 from src import expr
 
 """
-
+Run the commands written in `source` parameter, and returns the command run.
 """
 # TODO: Possibly add an exceptions class
 # Later add multiline support 
 def run(source:str) -> str:
-    '''
-    Run the commands written in `source` parameter,
-    and returns the command run.
-    '''
-    output = io.StringIO()
+    output = sys.stdout
     for line in source.splitlines():
-        exec_line(line, output)x
+        exec_line(line, output)
     return output.getvalue()
 
 """
-
+Executes the actual line into the output stream.
 """
+
 def exec_line(line:str, output):
-    '''
-    Executes the actual line into the output stream.
-    '''
     line = line.strip()
     if not line:
         return
-    statement = line.split(' ') # <- TODO: error here in interp_test.py (2026-08-23)
+    statement = line.split(' ')
     # TODO: Work around, better solution will come in the future. 
-    command = statement[0].upper()
+
     args = statement[1]
+    command = statement[0].split(':')
+
+    # Internal function to handle the postconditional truth-value expression 
+    def handler_tvexpr(cond:str):
+        pass
+
+    if (len(command) == 2): 
+        handler_tvexpr(command[1])
+        command = command[0]
+
+    command = command.upper()
+
     match command[0]:
         case W:
             write_command(args, output)
 
+
 """
 The M specification says that the WRITE command has this syntax: W[RITE][:tvexpr] expr|*intexpr|fcc[,...]
 
+From https://docs.yottadb.net/ProgrammersGuide/commands.html#write
+
+The WRITE command transfers a character stream specified by its arguments to the current device.
+
+The format of the WRITE command is:
+
+W[RITE][:tvexpr] expr|*intexpr|fcc[,...]
+
 """
 def write_command(args:str, output):
+    #Three cases: normal expression, integer expression (Writes a single char whose value point is the int), and fcc. 
+    if (args[0] == '*'):
+        codePointVal = int(args[1:])
+    def handler_intexpr(codePoint:int):
+        pass
+    def handler_fcc():
+        pass
+    
     output.write(expr.evaluate(args))
 
 """

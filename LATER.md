@@ -1,0 +1,1 @@
+- **UTF-8 Insistence:** Add the requirement that only UTF-8 characters will be accepted at the REPL. 
